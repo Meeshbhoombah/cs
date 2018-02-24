@@ -22,3 +22,9 @@ Two paths analogy
     + Mode of transportation
     + People walking
 
+## Flask C
+
+## Definitions
+
+## Resources
+
