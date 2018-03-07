@@ -4,7 +4,6 @@ design decisions about **computer programs**.
 
 ## Algorithmic Analysis
 1. [What is an algorithm?](#)
-    - [Computer Programs](#)
 2. [What factors are considered when comparing algorithms?](#)
 
 ### What is an algorithm?
