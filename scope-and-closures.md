@@ -12,7 +12,7 @@ Break up a string of characters into chunks - i.e: _tokens_
 - E.g: `var a = 2;` (most likely) = `var, a, =, 2, ;`
 
 ### Parsing
-Take in streak of tokens (array) and form an _AST_
+_AST_ = streak of tokens (array) and formed into a...
 - **A**bstract **S**yntax **T**ree
 
 ### Code Generation
@@ -20,6 +20,16 @@ Take AST and generate machine-readable code
 - Language specefic
 
 Javascript engine has a multitide of steps beyond this
-- Complexity increased due to language requirements
-- 
+- Complexity increased due to language requirements 
+  + E.g: JIT compilation, lazy compilation, hot re-compliation
+
+### Lookups
+_LHS_ = left-handed lookup
+- Source of assignment
+
+_RHS_ = right-handed lookup
+- Target of assignment
+
+Javascript engines look at scope from the innermost -> outermost
+- Outermost = `Global` scope
 
