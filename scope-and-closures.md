@@ -2,7 +2,7 @@
 JavaScript = _dynamic_ (_interpreted_) language **BUT STILL** compiled
 
 ## Compiler Theory
-Any compiled programming language generally undergoes three steps:
+Any compiled programming language undergoes three steps (generalizing):
 1. Tokenizing/Lexing
 2. Parsing
 3. Code Generation
