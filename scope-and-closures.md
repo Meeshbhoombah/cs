@@ -12,7 +12,7 @@ Break up a string of characters into chunks - i.e: _tokens_
 - E.g: `var a = 2;` (most likely) = `var, a, =, 2, ;`
 
 ### Parsing
-_AST_ = streak of tokens (array) and formed into a...
+_AST_ = stream of tokens (array) and formed into a...
 - **A**bstract **S**yntax **T**ree
 
 ### Code Generation
