@@ -33,3 +33,8 @@ _RHS_ = right-handed lookup
 Javascript engines look at scope from the innermost -> outermost
 - Outermost = `Global` scope
 
+## Lexical Scope
+Describes how a parser resolves variables names when functions are nested
+- "Lexical" refers to the usage of the location of a variable to determine its 
+  scope
+- Nested functions have access to variables declared in their outer scope
