@@ -33,8 +33,37 @@ _RHS_ = right-handed lookup
 Javascript engines look at scope from the innermost -> outermost
 - Outermost = `Global` scope
 
-## Lexical Scope
-Describes how a parser resolves variables names when functions are nested
+## Scope
+### Lexical Scope
+Describes how the JavaScript parser resolves var names when functions are nested
 - "Lexical" refers to the usage of the location of a variable to determine its 
   scope
-- Nested functions have access to variables declared in their outer scope
+
+### Function Scope
+- Nested functions have access to variables declared in all levels of its
+  surrounding scope
+- Variables are bound to their function scope and cannot be accessed by outer
+  scopes
+  + Follows "Princple of Least Privlege (aka Least Exposure, or Least 
+    Authority)"
+  + Enables collison avoidance (reuse variable identifiers)
+
+#### Anonymous Functions
+- Function expressions can be anon, but not function declarations
+
+#### Immediately Invoked Function Expressions (IIFE)
+```
+var a = 2;
+
+(function IIFE(){
+
+	var a = 3;
+	console.log(a); // 3
+
+})();
+
+console.log(a); // 2
+```
+
+### Block Scope
+
