@@ -46,7 +46,7 @@ Describes how the JavaScript parser resolves var names when functions are nested
   scopes
   + Follows "Princple of Least Privlege (aka Least Exposure, or Least 
     Authority)"
-  + Enables collison avoidance (reuse variable identifiers)
+  + Enables collison avoidance (reuse variable identifiers in different scopes)
 
 #### Anonymous Functions
 - Function expressions can be anon, but not function declarations
@@ -56,14 +56,91 @@ Describes how the JavaScript parser resolves var names when functions are nested
 var a = 2;
 
 (function IIFE(){
-
-	var a = 3;
-	console.log(a); // 3
-
+  var a = 3;
+  console.log(a); // 3
 })();
 
 console.log(a); // 2
 ```
 
 ### Block Scope
+```
+for (var i=0; i<10; i++) {
+  console.log(i);
+}
+```
+
+```
+var foo = true;
+
+if (foo) {
+  var bar = foo * 2;
+  bar = something( bar );
+  console.log( bar );
+}
+```
+
+```
+try {
+  eg();
+} catch (err) {
+  console.error(err);
+}
+
+// Reference Error
+console.error(err); 
+```
+The catch statement creates its own block scope
+
+#### `let`
+Isolates variable declaration to the scope it is defined within
+- Does not hoist variable
+
+```
+var foo = true;
+
+if (foo) {
+  let bar = foo * 2;
+  bar = something(bar);
+  console.log(bar);
+}
+
+console.log(bar); // ReferenceError
+```
+
+##### Garbage Collection
+```
+function process(data) {
+  // do something interesting
+}
+
+// anything declared inside this block can go away after!
+{
+  let someReallyBigData = { .. };
+
+  process( someReallyBigData );
+}
+
+var btn = document.getElementById( "my_button" );
+
+btn.addEventListener( "click", function click(evt){
+  console.log("button clicked");
+}, /*capturingPhase=*/false );
+```
+
+#### `const`
+```
+var foo = true;
+
+if (foo) {
+  var a = 2;
+  const b = 3; // block-scoped to the containing `if`
+
+  a = 3; // just fine!
+  b = 4; // error!
+}
+
+console.log(a); // 3
+console.log(b); // ReferenceError!e
+```
 
