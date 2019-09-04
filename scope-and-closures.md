@@ -69,6 +69,7 @@ for (var i=0; i<10; i++) {
   console.log(i);
 }
 ```
+`i` is only only available between the curly braces of the `for` loop
 
 ```
 var foo = true;
@@ -77,8 +78,9 @@ if (foo) {
   var bar = foo * 2;
   bar = something( bar );
   console.log( bar );
-}
+}l
 ```
+`if` statements also have their own block scope
 
 ```
 try {
@@ -143,4 +145,13 @@ if (foo) {
 console.log(a); // 3
 console.log(b); // ReferenceError!e
 ```
+
+## Hoisting
+```
+var a = 3;
+```
+Is seperated into its _declaration_ and _assignment_
+- Declaration = compiler-phase
+  + Declaration is hoisted to the top of its scope
+- Assignment = execution-phase
 
