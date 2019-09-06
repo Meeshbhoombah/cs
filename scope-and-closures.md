@@ -156,4 +156,108 @@ Is seperated into its _declaration_ and _assignment_
 - Assignment = execution-phase
 
 ## Closures
+Lexically scoped name binding
+```
+function foo() {
+  var a = 2;
+
+  function bar() {
+    console.log( a );
+  }
+
+  return bar;
+}
+
+var baz = foo();
+
+baz(); // 2 -- Whoa, closure was just observed, man.
+```
+
+### Loops
+```
+for (var i=1; i<=5; i++) {
+  (function(){
+    var j = i;
+    setTimeout(function timer(){
+            console.log(j);
+    }, j*1000);
+  })();
+}
+```
+Linters often get triggered by the use of closures
+
+Alternative way to write the above:
+```
+for (var i=1; i<=5; i++) {
+  (function(j) {
+    setTimeout(function timer(){
+            console.log(j);
+    }, j*1000);
+  })(i);
+}
+```
+
+### Modules
+```
+function CoolModule() {
+	var something = "cool";
+	var another = [1, 2, 3];
+
+	function doSomething() {
+		console.log( something );
+	}
+
+	function doAnother() {
+		console.log( another.join( " ! " ) );
+	}
+
+	return {
+		doSomething: doSomething,
+		doAnother: doAnother
+	};
+}
+
+var foo = CoolModule();
+
+foo.doSomething(); // cool
+foo.doAnother(); // 1 ! 2 ! 3
+```
+
+#### New ES6 Module
+```
+function hello(who) {
+	return "Let me introduce: " + who;
+}
+
+export hello;
+```
+**bar.js**
+
+```
+// import only `hello()` from the "bar" module
+import hello from "bar";
+
+var hungry = "hippo";
+
+function awesome() {
+	console.log(
+		hello( hungry ).toUpperCase()
+	);
+}
+
+export awesome;
+```
+**foo.js**
+
+```
+// import the entire "foo" and "bar" modules
+module foo from "foo";
+module bar from "bar";
+
+console.log(
+	bar.hello( "rhino" )
+); // Let me introduce: rhino
+
+foo.awesome(); // LET ME INTRODUCE: HIPPO
+```
 
