@@ -155,3 +155,5 @@ Is seperated into its _declaration_ and _assignment_
   + Declaration is hoisted to the top of its scope
 - Assignment = execution-phase
 
+## Closures
+
