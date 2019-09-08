@@ -5,7 +5,7 @@ Binding made when function invoked, determined function's call-site
 
 To determine `this` binding find call-site of that function
 
-Four rules apply:
+### Rules
 |Case               | Rule           |
 |-------------------|----------------|
 | Called with `new` | Use newly constructed object |
