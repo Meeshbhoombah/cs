@@ -9,7 +9,7 @@ To determine `this` binding find call-site of that function
 |Case               | Rule           |
 |-------------------|----------------|
 | Called with `new` | Use newly constructed object |
-
-1. Called with `new`? Call-sitdd
-1. 
+| Called with `call` or `bind`? | Use specefied object |
+| Called with conext object owning the call? | Use context object |
+| Default | `undefined` in strict mode, otherwise global object |
 
